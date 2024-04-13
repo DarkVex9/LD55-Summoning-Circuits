@@ -1,0 +1,15 @@
+Start North
+Opposite
+Clockwise
+East
+Widdershins
+Finish
+
+Start North
+Opposite
+Clockwise X
+Counter 2
+Widdershins
+Finish
+Padding
+Padding

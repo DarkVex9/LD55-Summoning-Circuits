@@ -1,0 +1,42 @@
+Puzzle game
+
+Figure out what the instructions mean
+  -cardinal directions
+  -clockwise, counterclockwise, sunwise, widdershins
+  -opposite, adjacent
+  -repeat
+  -step? (one space in the direction you just went, might be too vague)
+  -specific runes
+  -reference rune meanings that can be looked up in a book?
+
+
+Connect the Runes so they activate in order
+  -can't cross the wire
+  -limited wire positions in general
+  -limited wire positions per puzzle
+  -some fixed wires per puzzle
+  -maybe different pad positions on the runes per puzzle
+
+
+Necessary Polish
+  -Title
+  -Title Display
+  -Level Select
+  -Sounds
+    -Click
+    -Invalid Connection
+    -Connect?
+    -Start Summon
+    -Test hits dead-end
+    -Test hits wrong order
+    -Button Press
+  -Volume Setting
+
+
+Stretch Goals
+  -multiple wire layouts
+  -Puzzle Editor, share as text strings
+  -animated wizard in the top box doing the summoning, and the failing
+  -Music
+  -Ambient Sound
+

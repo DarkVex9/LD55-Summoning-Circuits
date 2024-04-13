@@ -1,0 +1,14 @@
+# Generated with GIMP Palette Export
+# Based on the palette LD55-SummoningPalette
+colors={
+'GoldDark': '#da9100',
+'GoldShaded': '#ffbf00',
+'Gold': '#ffdf00',
+'LCDLight': '#cadc9f',
+'LCDMedium': '#8bac0f',
+'LCDDark': '#30623c',
+'LCDBlack': '#0f380f',
+'Blue': '#44ddff',
+'Purple': '#cc33ff',
+'Blood': '#991515',
+'Red': '#cc1111'}

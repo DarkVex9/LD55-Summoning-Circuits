@@ -1,41 +1,69 @@
-[gd_scene load_steps=3 format=3 uid="uid://bojei2uoh20q5"]
+[gd_scene load_steps=4 format=3 uid="uid://bojei2uoh20q5"]
 
 [ext_resource type="Texture2D" uid="uid://7xtbm0cnlbae" path="res://Assets/Border9.png" id="1_avgx8"]
-
-[sub_resource type="Curve2D" id="Curve2D_3v8co"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0)
-}
-point_count = 1
+[ext_resource type="Texture2D" uid="uid://e1668rvgxq6l" path="res://Assets/OuterCircle.png" id="2_uwk7c"]
+[ext_resource type="Texture2D" uid="uid://ch2cwkrvvn23l" path="res://Assets/Guide1.png" id="3_gnp3t"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_3v8co")
-
 [node name="MainField" type="ColorRect" parent="."]
-offset_left = 98.0
-offset_right = 318.0
-offset_bottom = 180.0
+offset_left = 48.0
+offset_right = 160.0
+offset_bottom = 90.0
 color = Color(0.792157, 0.862745, 0.623529, 1)
 
 [node name="Circle Placeholder" type="ColorRect" parent="MainField"]
-offset_left = 32.0
-offset_top = 10.0
-offset_right = 192.0
-offset_bottom = 170.0
+visible = false
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 102.0
+offset_bottom = 86.0
 color = Color(0.188235, 0.384314, 0.235294, 1)
 
+[node name="ScreenBorder 160x90" type="NinePatchRect" parent="MainField"]
+offset_left = -49.0
+offset_top = -1.0
+offset_right = 113.0
+offset_bottom = 91.0
+texture = ExtResource("1_avgx8")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="MainField"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 102.0
+offset_bottom = 86.0
+texture = ExtResource("2_uwk7c")
+
+[node name="TextureRect" type="TextureRect" parent="MainField/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_gnp3t")
+
 [node name="TopLeftField" type="ColorRect" parent="."]
-offset_right = 96.0
-offset_bottom = 68.0
+offset_right = 54.0
+offset_bottom = 34.0
 color = Color(0.792157, 0.862745, 0.623529, 1)
 
 [node name="TopLeftBorder" type="NinePatchRect" parent="TopLeftField"]
 offset_left = -1.0
 offset_top = -1.0
-offset_right = 99.0
-offset_bottom = 71.0
+offset_right = 57.0
+offset_bottom = 35.0
 texture = ExtResource("1_avgx8")
 patch_margin_left = 5
 patch_margin_top = 5
@@ -43,27 +71,16 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="BottomLeftField" type="ColorRect" parent="."]
-offset_top = 70.0
-offset_right = 96.0
-offset_bottom = 178.0
+offset_top = 34.0
+offset_right = 54.0
+offset_bottom = 88.0
 color = Color(0.792157, 0.862745, 0.623529, 1)
 
 [node name="BottomLeft" type="NinePatchRect" parent="BottomLeftField"]
 offset_left = -1.0
 offset_top = -3.0
-offset_right = 99.0
-offset_bottom = 111.0
-texture = ExtResource("1_avgx8")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="ScreenBorder 320x180" type="NinePatchRect" parent="."]
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 321.0
-offset_bottom = 181.0
+offset_right = 57.0
+offset_bottom = 57.0
 texture = ExtResource("1_avgx8")
 patch_margin_left = 5
 patch_margin_top = 5

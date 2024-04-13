@@ -1,0 +1,118 @@
+#-----------#
+| Summoning |
+*-----------*
+
+What can be summoned
+-demons
+-devils
+-lawyers
+-fae
+-tentacles
+-eyes (parts of creatures)
+-generic monsters
+-allies
+-resources/tools
+-yourself?
+
+
+
+Ways to summon
+-incantation
+-circle
+-ritual
+-ingrediants
+-spells
+-premade charges
+-portals
+-runes
+-structures (temples, ruins, rune stones/standing stones, arches, caves)
+
+
+
+Mechanical feels to summoning
+-Flavoring on another mechanic
+-Quick attacks/interactions (arcade gun like feel)
+-Spots to find/interact with (Vampire Survivors find things on ground)
+-Design summoning to fit your current needs
+-Game is a puzzle to complete the summoning
+-Puzzle mechanic
+
+
+
+Other tidbits/ideas
+-Latin
+-Runes
+-Summoning Circles
+-Standing Stones
+-Lay Lines
+-Court Summons
+-Draw Sigals
+-Classical Materials (Salt,Iron,Silver,Crystals,Candles)
+-Summoning Salt
+
+
+
+#---------------------#
+| Specific game ideas |
+*---------------------*
+
+
+2d platformer summoning platforms, tools, etc
+
+2d platformer puzzler summoning platforms, barriers, boxes, portals, etc
+
+
+into the breach-esque stratagy game summoning attacks, units, barriers, etc
+-feels a little generic with a coat of theme slapped on top
+
+
+puzzle game figuring out how to do the summoning ritual
+-take inspiration from Minecraft magic mods (thaumcraft infusion, blood magic)
+ -could be trying to gradually unlock the ritual
+ -could be a comedy game of dying over and over to get it right
+ -maybe purposefully vague instructions in the spell book (with puns?)
+
+
+talking sim with summoned beings?
+-several angles with this
+  -politicking?
+  -negotiating to get them to accomplish a goal?
+    -indirect results/feedback like "Don't Touch Anything"
+  -dating sim?/friend sim?
+    -Jaiden Animations weirdest dating sims video
+-use this as a mechanic to get items in a larger puzzle game?
+
+
+joke about lawyers being from hell?
+-be a lawyer in an infernal court?
+  -summon witnesses
+  -Ace Attorney?
+  -summon help/bailif/etc?
+-court summons
+
+
+summon things in your opponet's work area/lab
+-arcade party game?
+
+
+digital/circuit themed summoning ritual
+-daemon?
+-circuit traces make up summoning circle
+-connect up wires/capacitors/chips/etc to activate the circle
+  -Seeing a few directions for this theming
+   -Last Call BBS style puzzle game?
+   -arcade brawler on a circuit board
+     -summoning things to help fight off a hoard
+-diesel punk adjacent factory daemons?
+
+
+draw sigals to do actions
+-robotek inspired
+-elemental attacks
+-maybe accuracy gives better results
+
+
+Puzzle game of tracing the summoning circles without doubling back or lifting the pen
+
+
+

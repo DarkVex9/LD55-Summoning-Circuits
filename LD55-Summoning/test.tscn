@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bojei2uoh20q5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_08sso"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 96.0
+offset_bottom = 26.0
+text = "Testing 1 2 3"
+label_settings = SubResource("LabelSettings_08sso")

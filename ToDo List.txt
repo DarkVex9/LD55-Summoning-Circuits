@@ -39,4 +39,5 @@ Stretch Goals
   -animated wizard in the top box doing the summoning, and the failing
   -Music
   -Ambient Sound
+  -Custom Godot Logo
 

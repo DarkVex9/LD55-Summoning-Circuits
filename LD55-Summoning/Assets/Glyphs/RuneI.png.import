@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4oyrds8jn0pr"
-path="res://.godot/imported/RuneP.png-8c0ab3b105827b7ce06b5e0413b25ce2.ctex"
+uid="uid://dqyex5xjt8vrd"
+path="res://.godot/imported/RuneI.png-ddc984c4acc9a74ee2359537060efaab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/RuneP.png"
-dest_files=["res://.godot/imported/RuneP.png-8c0ab3b105827b7ce06b5e0413b25ce2.ctex"]
+source_file="res://Assets/Glyphs/RuneI.png"
+dest_files=["res://.godot/imported/RuneI.png-ddc984c4acc9a74ee2359537060efaab.ctex"]
 
 [params]
 

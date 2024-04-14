@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://bojei2uoh20q5"]
+[gd_scene load_steps=11 format=3 uid="uid://bojei2uoh20q5"]
 
 [ext_resource type="Texture2D" uid="uid://7xtbm0cnlbae" path="res://Assets/Border9.png" id="1_avgx8"]
 [ext_resource type="Texture2D" uid="uid://e1668rvgxq6l" path="res://Assets/OuterCircle.png" id="2_uwk7c"]
 [ext_resource type="Texture2D" uid="uid://ch2cwkrvvn23l" path="res://Assets/Guide1.png" id="3_gnp3t"]
+[ext_resource type="Texture2D" uid="uid://bdrvnks6y01lr" path="res://Assets/RuneCircle.png" id="4_gpw2f"]
+[ext_resource type="Script" path="res://Rune.gd" id="5_5obd2"]
+[ext_resource type="Script" path="res://GameManager.gd" id="6_vigij"]
+[ext_resource type="Texture2D" uid="uid://b1vmxukc10cx6" path="res://Assets/Glyphs/RuneR.png" id="6_ywi2d"]
+[ext_resource type="Texture2D" uid="uid://o53mqfx6pdhv" path="res://Assets/Pad.png" id="7_6e50y"]
+[ext_resource type="Texture2D" uid="uid://b2lbxx8qah0uk" path="res://Assets/PadCenter.png" id="8_ur2k6"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kt6i"]
+size = Vector2(6, 6)
+
+[node name="Main" type="Node2D"]
 
 [node name="MainField" type="ColorRect" parent="."]
 offset_left = 48.0
@@ -14,6 +23,7 @@ color = Color(0.792157, 0.862745, 0.623529, 1)
 
 [node name="Circle Placeholder" type="ColorRect" parent="MainField"]
 visible = false
+layout_mode = 0
 offset_left = 20.0
 offset_top = 4.0
 offset_right = 102.0
@@ -21,6 +31,7 @@ offset_bottom = 86.0
 color = Color(0.188235, 0.384314, 0.235294, 1)
 
 [node name="ScreenBorder 160x90" type="NinePatchRect" parent="MainField"]
+layout_mode = 0
 offset_left = -49.0
 offset_top = -1.0
 offset_right = 113.0
@@ -31,7 +42,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="TextureRect" type="TextureRect" parent="MainField"]
+[node name="CircleOutline" type="TextureRect" parent="MainField"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 4.0
@@ -39,7 +50,7 @@ offset_right = 102.0
 offset_bottom = 86.0
 texture = ExtResource("2_uwk7c")
 
-[node name="TextureRect" type="TextureRect" parent="MainField/TextureRect"]
+[node name="TextureRect" type="TextureRect" parent="MainField/CircleOutline"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -54,12 +65,63 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_gnp3t")
 
+[node name="Connectable" type="Node2D" parent="MainField/CircleOutline"]
+
+[node name="RuneNorth" type="Sprite2D" parent="MainField/CircleOutline/Connectable"]
+position = Vector2(41, 16)
+texture = ExtResource("4_gpw2f")
+script = ExtResource("5_5obd2")
+
+[node name="RuneGlyph" type="Sprite2D" parent="MainField/CircleOutline/Connectable/RuneNorth"]
+modulate = Color(0.188235, 0.384314, 0.235294, 1)
+texture = ExtResource("6_ywi2d")
+
+[node name="PadTop" type="Sprite2D" parent="MainField/CircleOutline/Connectable/RuneNorth"]
+position = Vector2(0, -5)
+texture = ExtResource("7_6e50y")
+
+[node name="Area2D" type="Area2D" parent="MainField/CircleOutline/Connectable/RuneNorth/PadTop"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainField/CircleOutline/Connectable/RuneNorth/PadTop/Area2D"]
+shape = SubResource("RectangleShape2D_2kt6i")
+
+[node name="PadCenter" type="Sprite2D" parent="MainField/CircleOutline/Connectable/RuneNorth/PadTop"]
+texture = ExtResource("8_ur2k6")
+
+[node name="PadBottom" type="Sprite2D" parent="MainField/CircleOutline/Connectable/RuneNorth"]
+position = Vector2(0, 5)
+texture = ExtResource("7_6e50y")
+
+[node name="Area2D" type="Area2D" parent="MainField/CircleOutline/Connectable/RuneNorth/PadBottom"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainField/CircleOutline/Connectable/RuneNorth/PadBottom/Area2D"]
+shape = SubResource("RectangleShape2D_2kt6i")
+
+[node name="PadLeft" type="Sprite2D" parent="MainField/CircleOutline/Connectable/RuneNorth"]
+position = Vector2(-5, 0)
+texture = ExtResource("7_6e50y")
+
+[node name="Area2D" type="Area2D" parent="MainField/CircleOutline/Connectable/RuneNorth/PadLeft"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainField/CircleOutline/Connectable/RuneNorth/PadLeft/Area2D"]
+shape = SubResource("RectangleShape2D_2kt6i")
+
+[node name="PadRight" type="Sprite2D" parent="MainField/CircleOutline/Connectable/RuneNorth"]
+position = Vector2(5, 0)
+texture = ExtResource("7_6e50y")
+
+[node name="Area2D" type="Area2D" parent="MainField/CircleOutline/Connectable/RuneNorth/PadRight"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainField/CircleOutline/Connectable/RuneNorth/PadRight/Area2D"]
+shape = SubResource("RectangleShape2D_2kt6i")
+
 [node name="TopLeftField" type="ColorRect" parent="."]
 offset_right = 54.0
 offset_bottom = 34.0
 color = Color(0.792157, 0.862745, 0.623529, 1)
 
 [node name="TopLeftBorder" type="NinePatchRect" parent="TopLeftField"]
+layout_mode = 0
 offset_left = -1.0
 offset_top = -1.0
 offset_right = 57.0
@@ -77,6 +139,7 @@ offset_bottom = 88.0
 color = Color(0.792157, 0.862745, 0.623529, 1)
 
 [node name="BottomLeft" type="NinePatchRect" parent="BottomLeftField"]
+layout_mode = 0
 offset_left = -1.0
 offset_top = -3.0
 offset_right = 57.0
@@ -86,3 +149,6 @@ patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("6_vigij")

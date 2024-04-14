@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clsepex5qs8r5"
-path="res://.godot/imported/RuneA.png-899974d4201be9329f8b2fae7f0e8083.ctex"
+uid="uid://drrju2ohxyogq"
+path="res://.godot/imported/RuneY.png-7f88221a70ffe966bb11769adb7ca153.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/RuneA.png"
-dest_files=["res://.godot/imported/RuneA.png-899974d4201be9329f8b2fae7f0e8083.ctex"]
+source_file="res://Assets/Glyphs/RuneY.png"
+dest_files=["res://.godot/imported/RuneY.png-7f88221a70ffe966bb11769adb7ca153.ctex"]
 
 [params]
 

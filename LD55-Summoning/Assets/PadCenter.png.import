@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b758yg0fip1we"
-path="res://.godot/imported/RuneS.png-530ef7263905e4547a4deb04ce03bba9.ctex"
+uid="uid://b2lbxx8qah0uk"
+path="res://.godot/imported/PadCenter.png-ee6eed6a2b21d747b43d1a1eab062b6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/RuneS.png"
-dest_files=["res://.godot/imported/RuneS.png-530ef7263905e4547a4deb04ce03bba9.ctex"]
+source_file="res://Assets/PadCenter.png"
+dest_files=["res://.godot/imported/PadCenter.png-ee6eed6a2b21d747b43d1a1eab062b6b.ctex"]
 
 [params]
 

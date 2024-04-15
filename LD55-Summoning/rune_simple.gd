@@ -10,8 +10,7 @@ var padList:Array[Sprite2D]
 @export var enabledPads:Array[bool] = [false,false,false,false]
 
 var triggered:bool = false
-@export var leftConnection:Sprite2D
-@export var rightConnection:Sprite2D
+@export var connections:Array[Sprite2D]
 var gameManager:Node
 
 # Called when the node enters the scene tree for the first time.
@@ -61,17 +60,19 @@ func set_glyph(type:String):
 
 
 func trigger():
-	triggered = true
-	glyph.modulate = "44ddff"
-	if (leftConnection == null or leftConnection.triggered) and (rightConnection == null or rightConnection.triggered):
-		gameManager.bonk(self)
-	elif (leftConnection == null or leftConnection.triggered):
+	if not triggered:
+		triggered = true
+		glyph.modulate = "44ddff"
+		for pad in padList:
+			pad.modulate = "44ddff"
 		await get_tree().create_timer(0.2).timeout
-		rightConnection.trigger()
-	elif (rightConnection == null or rightConnection.triggered):
-		await get_tree().create_timer(0.2).timeout
-		leftConnection.trigger()
+		for thing in connections:
+			if not thing == null and thing.has_method("trigger") and not thing.triggered:
+				if not "selected" in thing or thing.selected:
+					thing.trigger()
 
 func reset():
 	triggered = false
 	glyph.modulate = "30623c"
+	for pad in padList:
+		pad.modulate = "cadc9f"

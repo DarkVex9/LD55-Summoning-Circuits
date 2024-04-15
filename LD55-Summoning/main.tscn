@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bojei2uoh20q5"]
+[gd_scene load_steps=11 format=3 uid="uid://bojei2uoh20q5"]
 
 [ext_resource type="Texture2D" uid="uid://7xtbm0cnlbae" path="res://Assets/Border9.png" id="1_avgx8"]
 [ext_resource type="Texture2D" uid="uid://e1668rvgxq6l" path="res://Assets/OuterCircle.png" id="2_uwk7c"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cyt4hu3jkbj83" path="res://wire.tscn" id="5_rekc5"]
 [ext_resource type="Script" path="res://rune_simple.gd" id="5_wmhbt"]
 [ext_resource type="Script" path="res://GameManager.gd" id="6_vigij"]
+[ext_resource type="Texture2D" uid="uid://o37fq6s8y5kh" path="res://Assets/Connections/MiddleSegmentLong.png" id="7_pbig4"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vi68w"]
 
@@ -42,7 +43,8 @@ offset_right = 102.0
 offset_bottom = 86.0
 texture = ExtResource("2_uwk7c")
 
-[node name="TextureRect" type="TextureRect" parent="MainField/CircleOutline"]
+[node name="GuideCircle" type="TextureRect" parent="MainField/CircleOutline"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,18 +61,58 @@ texture = ExtResource("3_gnp3t")
 
 [node name="Connectable" type="Node2D" parent="MainField/CircleOutline"]
 
-[node name="Rune" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("rightConnection") instance=ExtResource("4_aocgj")]
+[node name="Rune" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("4_aocgj")]
 script = ExtResource("5_wmhbt")
 glyphType = "A"
-enabledPads = Array[bool]([true, true, false, false])
-rightConnection = NodePath("../WireMid1")
+enabledPads = Array[bool]([false, true, false, false])
+connections = [NodePath("../WireMid1")]
 
-[node name="WireMid1" parent="MainField/CircleOutline/Connectable" instance=ExtResource("5_rekc5")]
+[node name="Rune2" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("4_aocgj")]
+position = Vector2(66, 41)
+script = ExtResource("5_wmhbt")
+glyphType = "R"
+enabledPads = Array[bool]([true, false, true, false])
+connections = [NodePath("../WireMid2"), NodePath("../WireMid3")]
 
-[node name="WireMid2" parent="MainField/CircleOutline/Connectable" instance=ExtResource("5_rekc5")]
+[node name="Rune3" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("4_aocgj")]
+position = Vector2(16, 41)
+script = ExtResource("5_wmhbt")
+glyphType = "Y"
+enabledPads = Array[bool]([false, false, true, false])
+connections = [NodePath("../WireMid6"), null]
+
+[node name="WireMid1" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("5_rekc5")]
+connections = [NodePath("../Rune"), NodePath("../WireMid2")]
+
+[node name="WireMid2" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("5_rekc5")]
 position = Vector2(62, 29)
 rotation = -1.5708
 scale = Vector2(1, -1)
+connections = [NodePath("../WireMid1"), NodePath("../Rune2")]
+
+[node name="WireMid3" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("5_rekc5")]
+position = Vector2(62, 53)
+rotation = -1.5708
+scale = Vector2(-1, -1)
+connections = [NodePath("../Rune2"), NodePath("../WireMid4")]
+
+[node name="WireMid4" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("5_rekc5")]
+position = Vector2(50, 62)
+scale = Vector2(1, -1)
+texture = ExtResource("7_pbig4")
+connections = [NodePath("../WireMid3"), NodePath("../WireMid5")]
+
+[node name="WireMid5" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("5_rekc5")]
+position = Vector2(32, 62)
+scale = Vector2(-1, -1)
+texture = ExtResource("7_pbig4")
+connections = [NodePath("../WireMid4"), NodePath("../WireMid6")]
+
+[node name="WireMid6" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("5_rekc5")]
+position = Vector2(20, 53)
+rotation = 1.5708
+scale = Vector2(1, -1)
+connections = [NodePath("../WireMid5"), NodePath("../Rune3")]
 
 [node name="RunButton" type="TextureRect" parent="MainField"]
 layout_mode = 0

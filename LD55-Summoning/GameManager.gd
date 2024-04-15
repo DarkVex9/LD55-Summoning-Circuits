@@ -7,6 +7,9 @@ var connectableList:Array[Node]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connectableList= get_tree().get_root().get_node("Main/MainField/CircleOutline/Connectable").get_children()
+	for thing in connectableList:
+		if "gameManager" in thing:
+			thing.gameManager = self
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -31,6 +34,7 @@ func bonk(where:Sprite2D):
 	push_error("Simulation Bonk at "+str(where))
 
 func reset():
+	print("reset")
 	for thing in connectableList:
 		if thing.has_method("reset"):
 			thing.reset()

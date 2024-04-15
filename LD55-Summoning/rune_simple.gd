@@ -1,7 +1,13 @@
 extends Sprite2D
 
 var glyph:Sprite2D
+var padTop:Sprite2D
+var padRight:Sprite2D
+var padLeft:Sprite2D
+var padBottom:Sprite2D
+var padList:Array[Sprite2D]
 @export var glyphType:String
+@export var enabledPads:Array[bool] = [false,false,false,false]
 
 var triggered:bool = false
 @export var leftConnection:Sprite2D
@@ -12,6 +18,15 @@ var gameManager:Node
 func _ready():
 	glyph = get_node("RuneGlyph")
 	set_glyph(glyphType)
+	padTop = get_node("PadTop")
+	padLeft = get_node("PadLeft")
+	padRight = get_node("PadRight")
+	padBottom = get_node("PadBottom")
+	padList = [padTop,padRight,padBottom,padLeft]
+	for i in 4:
+		padList[i].visible = enabledPads[i]
+		padList[i].modulate = "cadc9f"
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -48,12 +63,12 @@ func set_glyph(type:String):
 func trigger():
 	triggered = true
 	glyph.modulate = "44ddff"
-	if leftConnection.triggered and rightConnection.triggered:
+	if (leftConnection == null or leftConnection.triggered) and (rightConnection == null or rightConnection.triggered):
 		gameManager.bonk(self)
-	elif leftConnection.triggered:
+	elif (leftConnection == null or leftConnection.triggered):
 		await get_tree().create_timer(0.2).timeout
 		rightConnection.trigger()
-	elif rightConnection.triggered:
+	elif (rightConnection == null or rightConnection.triggered):
 		await get_tree().create_timer(0.2).timeout
 		leftConnection.trigger()
 

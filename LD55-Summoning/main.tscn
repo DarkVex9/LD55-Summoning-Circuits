@@ -59,11 +59,18 @@ texture = ExtResource("3_gnp3t")
 
 [node name="Connectable" type="Node2D" parent="MainField/CircleOutline"]
 
-[node name="Rune" parent="MainField/CircleOutline/Connectable" instance=ExtResource("4_aocgj")]
+[node name="Rune" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("rightConnection") instance=ExtResource("4_aocgj")]
 script = ExtResource("5_wmhbt")
-glyphType = ""
+glyphType = "A"
+enabledPads = Array[bool]([true, true, false, false])
+rightConnection = NodePath("../WireMid1")
 
 [node name="WireMid1" parent="MainField/CircleOutline/Connectable" instance=ExtResource("5_rekc5")]
+
+[node name="WireMid2" parent="MainField/CircleOutline/Connectable" instance=ExtResource("5_rekc5")]
+position = Vector2(62, 29)
+rotation = -1.5708
+scale = Vector2(1, -1)
 
 [node name="RunButton" type="TextureRect" parent="MainField"]
 layout_mode = 0
@@ -116,7 +123,7 @@ patch_margin_bottom = 5
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("runeList")]
 script = ExtResource("6_vigij")
-runeList = [null, null, null, null]
+runeList = [NodePath("../MainField/CircleOutline/Connectable/Rune"), null, null, null]
 
 [connection signal="input_event" from="MainField/RunButton/Area2D" to="GameManager" method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="MainField/RunButton/Area2D" to="GameManager" method="_on_area_2d_mouse_entered"]

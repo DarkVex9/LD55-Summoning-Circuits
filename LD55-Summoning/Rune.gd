@@ -15,8 +15,6 @@ var padList:Array[Sprite2D]
 var enabledPads := {"top":false,"bottom":false,"right":false,"left":false}
 
 var gameManager:Node
-var rightWire
-var leftWire
 
 var triggered:bool = false
 var connection1:Sprite2D
@@ -130,13 +128,15 @@ func _on_simulation_start():
 		assert(padLeft.get_node("Area2D").get_overlapping_areas().size() == 1,"padLeft Area2D found the wrong number of areas: "+str(padLeft.get_node("Area2D").get_overlapping_areas().size()))
 		connection2 = padLeft.get_node("Area2D").get_overlapping_areas()[0].get_parent().get_parent()
 
-func simulation_trigger(previous:Sprite2D):
-	assert(previous == connection1 or previous == connection2, "Trigger called by disconnected node")
-	await get_tree().create_timer(0.2).timeout
-	if previous == connection1:
-		if connection2 != null:
-			connection2.simulation_trigger(self)
-	
+#func simulation_trigger(previous:Sprite2D):
+#	assert(previous == connection1 or previous == connection2, "Trigger called by disconnected node")
+#	await get_tree().create_timer(0.2).timeout
+#	if previous == connection1:
+#		if connection2 != null:
+#			connection2.simulation_trigger(self)
+
+func trigger():
+	if leftConnection
 
 func _on_simulation_reset():
 	triggered = false

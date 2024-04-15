@@ -1,14 +1,12 @@
 extends Node
 
+@export var runeList:Array[Sprite2D]
+var connectableList:Array[Node]
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var RuneNorth:Sprite2D = get_tree().get_root().get_node("Main/MainField/CircleOutline/Connectable/RuneNorth")
-	RuneNorth.setGameManager(self)
-	RuneNorth.setGlyph("F")
-	RuneNorth.setPads("T","L")
-	var TestWire:Sprite2D = get_tree().get_root().get_node("Main/MainField/CircleOutline/Connectable/WireMid1")
-	TestWire.set_availible(true)
+	connectableList= get_tree().get_root().get_node("MainField/CircleOutline/Connectable").get_children()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -26,3 +24,13 @@ func _on_area_2d_mouse_entered():
 
 func _on_area_2d_mouse_exited():
 	pass # Replace with function body.
+
+
+func bonk(where:Sprite2D):
+	pass
+	push_error("Simulation Bonk at "+str(where))
+
+func reset():
+	for thing in connectableList:
+		if thing.has_method("reset"):
+			thing.reset()

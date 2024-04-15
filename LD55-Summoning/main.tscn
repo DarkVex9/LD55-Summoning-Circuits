@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bojei2uoh20q5"]
+[gd_scene load_steps=10 format=3 uid="uid://bojei2uoh20q5"]
 
 [ext_resource type="Texture2D" uid="uid://7xtbm0cnlbae" path="res://Assets/Border9.png" id="1_avgx8"]
 [ext_resource type="Texture2D" uid="uid://e1668rvgxq6l" path="res://Assets/OuterCircle.png" id="2_uwk7c"]
 [ext_resource type="Texture2D" uid="uid://ch2cwkrvvn23l" path="res://Assets/Guide1.png" id="3_gnp3t"]
 [ext_resource type="PackedScene" uid="uid://cbv3syepkkqhx" path="res://rune.tscn" id="4_aocgj"]
 [ext_resource type="PackedScene" uid="uid://cyt4hu3jkbj83" path="res://wire.tscn" id="5_rekc5"]
+[ext_resource type="Script" path="res://rune_simple.gd" id="5_wmhbt"]
 [ext_resource type="Script" path="res://GameManager.gd" id="6_vigij"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vi68w"]
@@ -59,6 +60,8 @@ texture = ExtResource("3_gnp3t")
 [node name="Connectable" type="Node2D" parent="MainField/CircleOutline"]
 
 [node name="Rune" parent="MainField/CircleOutline/Connectable" instance=ExtResource("4_aocgj")]
+script = ExtResource("5_wmhbt")
+glyphType = ""
 
 [node name="WireMid1" parent="MainField/CircleOutline/Connectable" instance=ExtResource("5_rekc5")]
 
@@ -111,8 +114,9 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="GameManager" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("runeList")]
 script = ExtResource("6_vigij")
+runeList = [null, null, null, null]
 
 [connection signal="input_event" from="MainField/RunButton/Area2D" to="GameManager" method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="MainField/RunButton/Area2D" to="GameManager" method="_on_area_2d_mouse_entered"]

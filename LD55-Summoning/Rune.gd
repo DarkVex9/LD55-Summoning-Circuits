@@ -45,6 +45,7 @@ func _process(delta):
 
 func setGameManager(manager:Node):
 	gameManager = manager
+	gameManager.connect("simulation_start",_on_simulation_start())
 
 func setGlyph(type:String):
 	glyph.modulate = "30623c"
@@ -103,31 +104,31 @@ func _on_simulation_start():
 	connection1 = null
 	connection2 = null
 	if padTop.visible:
-		assert(padTop.get_node("Area2d").get_overlapping_areas().length == 1,"padTop Area2d found the wrong number of areas: "+padTop.get_node("Area2d").get_overlapping_areas().length)
-		connection1 = padTop.get_node("Area2d").get_overlapping_areas()[0].get_parent().get_parent()
+		assert(padTop.get_node("Area2D").get_overlapping_areas().size() == 1,"padTop Area2D found the wrong number of areas: "+str(padTop.get_node("Area2D").get_overlapping_areas().size()))
+		connection1 = padTop.get_node("Area2D").get_overlapping_areas()[0].get_parent().get_parent()
 		connectionFound = 0
 	elif padRight.visible:
-		assert(padRight.get_node("Area2d").get_overlapping_areas().length == 1,"padRight Area2d found the wrong number of areas: "+padRight.get_node("Area2d").get_overlapping_areas().length)
-		connection1 = padRight.get_node("Area2d").get_overlapping_areas()[0].get_parent().get_parent()
+		assert(padRight.get_node("Area2D").get_overlapping_areas().size() == 1,"padRight Area2D found the wrong number of areas: "+str(padRight.get_node("Area2D").get_overlapping_areas().size()))
+		connection1 = padRight.get_node("Area2D").get_overlapping_areas()[0].get_parent().get_parent()
 		connectionFound = 1
 	elif padLeft.visible:
-		assert(padLeft.get_node("Area2d").get_overlapping_areas().length == 1,"padLeft Area2d found the wrong number of areas: "+padLeft.get_node("Area2d").get_overlapping_areas().length)
-		connection1 = padLeft.get_node("Area2d").get_overlapping_areas()[0].get_parent().get_parent()
+		assert(padLeft.get_node("Area2D").get_overlapping_areas().size() == 1,"padLeft Area2D found the wrong number of areas: "+str(padLeft.get_node("Area2D").get_overlapping_areas().size()))
+		connection1 = padLeft.get_node("Area2D").get_overlapping_areas()[0].get_parent().get_parent()
 		connectionFound = 2
 	elif padBottom.visible:
-		assert(padBottom.get_node("Area2d").get_overlapping_areas().length == 1,"padBottom Area2d found the wrong number of areas: "+padBottom.get_node("Area2d").get_overlapping_areas().length)
-		connection1 = padBottom.get_node("Area2d").get_overlapping_areas()[0].get_parent().get_parent()
+		assert(padBottom.get_node("Area2D").get_overlapping_areas().size() == 1,"padBottom Area2D found the wrong number of areas: "+str(padBottom.get_node("Area2D").get_overlapping_areas().size()))
+		connection1 = padBottom.get_node("Area2D").get_overlapping_areas()[0].get_parent().get_parent()
 		connectionFound = 3
 	
 	if connectionFound != 1 and padRight.visible:
-		assert(padRight.get_node("Area2d").get_overlapping_areas().length == 1,"padRight Area2d found the wrong number of areas: "+padRight.get_node("Area2d").get_overlapping_areas().length)
-		connection2 = padRight.get_node("Area2d").get_overlapping_areas()[0].get_parent().get_parent()
+		assert(padRight.get_node("Area2D").get_overlapping_areas().size() == 1,"padRight Area2D found the wrong number of areas: "+str(padRight.get_node("Area2D").get_overlapping_areas().size()))
+		connection2 = padRight.get_node("Area2D").get_overlapping_areas()[0].get_parent().get_parent()
 	elif connectionFound != 2 and padLeft.visible:
-		assert(padLeft.get_node("Area2d").get_overlapping_areas().length == 1,"padLeft Area2d found the wrong number of areas: "+padLeft.get_node("Area2d").get_overlapping_areas().length)
-		connection2 = padLeft.get_node("Area2d").get_overlapping_areas()[0].get_parent().get_parent()
+		assert(padLeft.get_node("Area2D").get_overlapping_areas().size() == 1,"padLeft Area2D found the wrong number of areas: "+str(padLeft.get_node("Area2D").get_overlapping_areas().size()))
+		connection2 = padLeft.get_node("Area2D").get_overlapping_areas()[0].get_parent().get_parent()
 	elif connectionFound != 3 and padBottom.visible:
-		assert(padLeft.get_node("Area2d").get_overlapping_areas().length == 1,"padLeft Area2d found the wrong number of areas: "+padLeft.get_node("Area2d").get_overlapping_areas().length)
-		connection2 = padLeft.get_node("Area2d").get_overlapping_areas()[0].get_parent().get_parent()
+		assert(padLeft.get_node("Area2D").get_overlapping_areas().size() == 1,"padLeft Area2D found the wrong number of areas: "+str(padLeft.get_node("Area2D").get_overlapping_areas().size()))
+		connection2 = padLeft.get_node("Area2D").get_overlapping_areas()[0].get_parent().get_parent()
 
 func simulation_trigger(previous:Sprite2D):
 	assert(previous == connection1 or previous == connection2, "Trigger called by disconnected node")

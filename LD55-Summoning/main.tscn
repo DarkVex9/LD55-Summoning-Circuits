@@ -58,7 +58,7 @@ texture = ExtResource("3_gnp3t")
 
 [node name="Connectable" type="Node2D" parent="MainField/CircleOutline"]
 
-[node name="RuneNorth" parent="MainField/CircleOutline/Connectable" instance=ExtResource("4_aocgj")]
+[node name="Rune" parent="MainField/CircleOutline/Connectable" instance=ExtResource("4_aocgj")]
 
 [node name="WireMid1" parent="MainField/CircleOutline/Connectable" instance=ExtResource("5_rekc5")]
 

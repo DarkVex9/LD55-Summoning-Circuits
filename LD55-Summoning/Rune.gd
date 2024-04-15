@@ -70,21 +70,21 @@ func setGlyph(type:String):
 func setPads(dir1:String,dir2:String):
 	for pad in padList:
 		pad.visible = false
-		pad.get_node("Area2D/CollisionShape2D").disabled = true
+		pad.get_node("Area2D/CollisionShape2D").set_deferred("disabled",true)
 	for dir in [dir1,dir2]:
 		match dir:
 			"T":
 				padTop.visible = true
-				padTop.get_node("Area2D/CollisionShape2D").disabled = false
+				padTop.get_node("Area2D/CollisionShape2D").set_deferred("disabled",false)
 			"R":
 				padRight.visible = true
-				padRight.get_node("Area2D/CollisionShape2D").disabled = false
+				padRight.get_node("Area2D/CollisionShape2D").set_deferred("disabled",false)
 			"L":
 				padLeft.visible = true
-				padLeft.get_node("Area2D/CollisionShape2D").disabled = false
+				padLeft.get_node("Area2D/CollisionShape2D").set_deferred("disabled",false)
 			"B":
 				padBottom.visible = true
-				padBottom.get_node("Area2D/CollisionShape2D").disabled = false
+				padBottom.get_node("Area2D/CollisionShape2D").set_deferred("disabled",false)
 
 func _on_simulation_start():
 	triggered = false

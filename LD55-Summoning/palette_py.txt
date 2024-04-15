@@ -8,6 +8,8 @@ colors={
 'LCDMedium': '#8bac0f',
 'LCDDark': '#30623c',
 'LCDBlack': '#0f380f',
+'LCDHighlight': '#759600',
+'LCDDarkHighlight': '#21532f',
 'Blue': '#44ddff',
 'Purple': '#cc33ff',
 'Blood': '#991515',

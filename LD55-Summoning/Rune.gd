@@ -12,8 +12,11 @@ var padLeftCenter:Sprite2D
 var padBottomCenter:Sprite2D
 
 var padList:Array[Sprite2D]
+var enabledPads := {"top":false,"bottom":false,"right":false,"left":false}
 
-var gameManger:Node
+var gameManager:Node
+var rightWire
+var leftWire
 
 var triggered:bool = false
 var connection1:Sprite2D
@@ -41,7 +44,7 @@ func _process(delta):
 	pass
 
 func setGameManager(manager:Node):
-	gameManger = manager
+	gameManager = manager
 
 func setGlyph(type:String):
 	glyph.modulate = "30623c"
@@ -68,6 +71,10 @@ func setGlyph(type:String):
 			glyph.set_texture(load("res://Assets/Glyphs/RuneY.png"))
 
 func setPads(dir1:String,dir2:String):
+	enabledPads.top = false
+	enabledPads.bottom = false
+	enabledPads.right = false
+	enabledPads.left = false
 	for pad in padList:
 		pad.visible = false
 		pad.get_node("Area2D/CollisionShape2D").set_deferred("disabled",true)
@@ -76,15 +83,19 @@ func setPads(dir1:String,dir2:String):
 			"T":
 				padTop.visible = true
 				padTop.get_node("Area2D/CollisionShape2D").set_deferred("disabled",false)
+				enabledPads.top = true
 			"R":
 				padRight.visible = true
 				padRight.get_node("Area2D/CollisionShape2D").set_deferred("disabled",false)
+				enabledPads.right = true
 			"L":
 				padLeft.visible = true
 				padLeft.get_node("Area2D/CollisionShape2D").set_deferred("disabled",false)
+				enabledPads.left = true
 			"B":
 				padBottom.visible = true
 				padBottom.get_node("Area2D/CollisionShape2D").set_deferred("disabled",false)
+				enabledPads.bottom = true
 
 func _on_simulation_start():
 	triggered = false

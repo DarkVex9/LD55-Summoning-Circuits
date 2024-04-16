@@ -1,0 +1,367 @@
+[gd_scene load_steps=16 format=3 uid="uid://6r3cadhroxem"]
+
+[ext_resource type="Texture2D" uid="uid://7xtbm0cnlbae" path="res://Assets/Border9.png" id="1_onei6"]
+[ext_resource type="Texture2D" uid="uid://e1668rvgxq6l" path="res://Assets/OuterCircle.png" id="2_7ild7"]
+[ext_resource type="Texture2D" uid="uid://ch2cwkrvvn23l" path="res://Assets/Guide1.png" id="3_rb1ru"]
+[ext_resource type="PackedScene" uid="uid://cbv3syepkkqhx" path="res://rune.tscn" id="4_7rnb0"]
+[ext_resource type="Script" path="res://rune_simple.gd" id="5_r0l7p"]
+[ext_resource type="PackedScene" uid="uid://cyt4hu3jkbj83" path="res://wire.tscn" id="6_bxq7b"]
+[ext_resource type="PackedScene" uid="uid://05m587qfav24" path="res://wireInner.tscn" id="7_mlk4w"]
+[ext_resource type="PackedScene" uid="uid://cg8a0b21c17jc" path="res://wireDiagonalToInner.tscn" id="8_0konx"]
+[ext_resource type="Texture2D" uid="uid://cj70uufn8y7tq" path="res://Assets/playButton.png" id="9_3d60o"]
+[ext_resource type="FontFile" uid="uid://dpitwllywq602" path="res://Assets/Font.png" id="10_qxv5q"]
+[ext_resource type="Texture2D" uid="uid://bdrvnks6y01lr" path="res://Assets/RuneCircle.png" id="11_uhhfw"]
+[ext_resource type="Texture2D" uid="uid://dqyex5xjt8vrd" path="res://Assets/Glyphs/RuneI.png" id="12_5dwhq"]
+[ext_resource type="Texture2D" uid="uid://b1vmxukc10cx6" path="res://Assets/Glyphs/RuneR.png" id="13_n1nat"]
+[ext_resource type="Script" path="res://GameManager.gd" id="14_63tjo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15oct"]
+size = Vector2(10, 10)
+
+[node name="Puzzle" type="Node2D"]
+
+[node name="MainField" type="ColorRect" parent="."]
+offset_left = 48.0
+offset_right = 160.0
+offset_bottom = 90.0
+mouse_filter = 1
+color = Color(0.792157, 0.862745, 0.623529, 1)
+
+[node name="ScreenBorder 160x90" type="NinePatchRect" parent="MainField"]
+layout_mode = 0
+offset_left = -49.0
+offset_top = -1.0
+offset_right = 113.0
+offset_bottom = 91.0
+texture = ExtResource("1_onei6")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="CircleOutline" type="TextureRect" parent="MainField"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 102.0
+offset_bottom = 86.0
+texture = ExtResource("2_7ild7")
+
+[node name="GuideCircle" type="TextureRect" parent="MainField/CircleOutline"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_rb1ru")
+
+[node name="Connectable" type="Node2D" parent="MainField/CircleOutline"]
+
+[node name="Rune" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("4_7rnb0")]
+z_index = 2
+script = ExtResource("5_r0l7p")
+glyphType = "A"
+enabledPads = Array[bool]([false, false, true, false])
+connections = [NodePath("../WireInner"), NodePath("../WireInner8")]
+
+[node name="Rune2" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("4_7rnb0")]
+z_index = 2
+position = Vector2(66, 41)
+script = ExtResource("5_r0l7p")
+glyphType = "R"
+enabledPads = Array[bool]([true, false, true, false])
+connections = [NodePath("../WireMid2"), NodePath("../WireMid3")]
+
+[node name="Rune3" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("4_7rnb0")]
+z_index = 2
+position = Vector2(41, 66)
+script = ExtResource("5_r0l7p")
+glyphType = "C"
+enabledPads = Array[bool]([true, true, false, true])
+connections = [NodePath("../WireInner4"), NodePath("../WireInner5"), NodePath("../WireMid4"), NodePath("../WireMid5")]
+
+[node name="Rune4" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("4_7rnb0")]
+z_index = 2
+position = Vector2(16, 41)
+script = ExtResource("5_r0l7p")
+glyphType = "I"
+enabledPads = Array[bool]([true, false, true, false])
+connections = [NodePath("../WireMid6"), NodePath("../WireMid7")]
+
+[node name="WireMid1" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_bxq7b")]
+visible = false
+connections = [NodePath("../Rune"), NodePath("../WireMid2"), NodePath("../InnerToMidDiagonal")]
+
+[node name="WireMid2" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_bxq7b")]
+position = Vector2(62, 29)
+rotation = -1.5708
+scale = Vector2(1, -1)
+connections = [NodePath("../WireMid1"), NodePath("../Rune2"), NodePath("../InnerToMidDiagonal")]
+
+[node name="WireMid3" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_bxq7b")]
+position = Vector2(62, 53)
+rotation = -1.5708
+scale = Vector2(-1, -1)
+connections = [NodePath("../Rune2"), NodePath("../WireMid4"), NodePath("../InnerToMidDiagonal2")]
+
+[node name="WireMid4" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_bxq7b")]
+position = Vector2(53, 62)
+scale = Vector2(1, -1)
+connections = [NodePath("../WireMid3"), NodePath("../WireMid5"), NodePath("../InnerToMidDiagonal2")]
+
+[node name="WireMid5" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_bxq7b")]
+position = Vector2(29, 62)
+scale = Vector2(-1, -1)
+connections = [NodePath("../WireMid4"), NodePath("../WireMid6"), NodePath("../InnerToMidDiagonal3")]
+
+[node name="WireMid6" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_bxq7b")]
+position = Vector2(20, 53)
+rotation = 1.5708
+scale = Vector2(1, -1)
+connections = [NodePath("../WireMid5"), NodePath("../Rune4"), NodePath("../InnerToMidDiagonal3")]
+
+[node name="WireMid7" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_bxq7b")]
+position = Vector2(20, 29)
+rotation = 1.5708
+scale = Vector2(-1, -1)
+connections = [NodePath("../WireInner8"), NodePath("../InnerToMidDiagonal4"), NodePath("../Rune4")]
+
+[node name="WireMid8" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_bxq7b")]
+visible = false
+position = Vector2(29, 20)
+scale = Vector2(-1, 1)
+connections = [NodePath("../Rune"), NodePath("../WireMid7"), NodePath("../InnerToMidDiagonal4")]
+
+[node name="WireInner" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("7_mlk4w")]
+position = Vector2(47, 27)
+connections = [NodePath("../WireInner2"), NodePath("../WireInner8"), NodePath("../InnerToMidDiagonal"), NodePath("../Rune")]
+
+[node name="WireInner2" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("7_mlk4w")]
+position = Vector2(55, 35)
+rotation = 1.5708
+scale = Vector2(-1, 1)
+connections = [NodePath("../WireInner"), NodePath("../WireInner3"), NodePath("../InnerToMidDiagonal")]
+
+[node name="WireInner3" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("7_mlk4w")]
+position = Vector2(55, 47)
+rotation = -1.5708
+scale = Vector2(-1, -1)
+connections = [NodePath("../WireInner2"), NodePath("../WireInner4"), NodePath("../InnerToMidDiagonal2")]
+
+[node name="WireInner4" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("7_mlk4w")]
+position = Vector2(47, 55)
+scale = Vector2(1, -1)
+connections = [NodePath("../WireInner3"), NodePath("../WireInner5"), NodePath("../InnerToMidDiagonal2"), NodePath("../Rune3")]
+
+[node name="WireInner5" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("7_mlk4w")]
+position = Vector2(35, 55)
+connections = [NodePath("../WireInner6"), NodePath("../WireInner4"), NodePath("../InnerToMidDiagonal3"), NodePath("../Rune3")]
+
+[node name="WireInner6" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("7_mlk4w")]
+position = Vector2(27, 47)
+rotation = 1.5708
+scale = Vector2(1, -1)
+connections = [NodePath("../WireInner5"), NodePath("../WireInner7"), NodePath("../InnerToMidDiagonal3")]
+
+[node name="WireInner7" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("7_mlk4w")]
+position = Vector2(27, 35)
+rotation = 1.5708
+scale = Vector2(-1, -1)
+connections = [NodePath("../WireInner8"), NodePath("../WireInner6"), NodePath("../InnerToMidDiagonal4")]
+
+[node name="WireInner8" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("7_mlk4w")]
+position = Vector2(35, 27)
+scale = Vector2(-1, 1)
+connections = [NodePath("../WireInner"), NodePath("../WireInner7"), NodePath("../InnerToMidDiagonal4"), NodePath("../Rune")]
+
+[node name="InnerToMidDiagonal" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("8_0konx")]
+position = Vector2(56, 26)
+connections = [NodePath("../WireInner"), NodePath("../WireInner2"), NodePath("../WireMid1"), NodePath("../WireMid2")]
+
+[node name="InnerToMidDiagonal2" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("8_0konx")]
+position = Vector2(56, 56)
+rotation = 1.5708
+connections = [NodePath("../WireMid3"), NodePath("../WireMid4"), NodePath("../WireInner3"), NodePath("../WireInner4")]
+
+[node name="InnerToMidDiagonal3" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("8_0konx")]
+position = Vector2(26, 56)
+connections = [NodePath("../WireMid5"), NodePath("../WireMid6"), NodePath("../WireInner5"), NodePath("../WireInner6")]
+
+[node name="InnerToMidDiagonal4" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("8_0konx")]
+position = Vector2(26, 26)
+rotation = 1.5708
+connections = [NodePath("../WireMid8"), NodePath("../WireMid7"), NodePath("../WireInner7"), NodePath("../WireInner8")]
+
+[node name="RunButton" type="TextureRect" parent="MainField"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 20.0
+offset_bottom = 14.0
+texture = ExtResource("9_3d60o")
+
+[node name="Area2D" type="Area2D" parent="MainField/RunButton"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainField/RunButton/Area2D"]
+position = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_15oct")
+
+[node name="TopLeftField" type="ColorRect" parent="."]
+offset_right = 54.0
+offset_bottom = 34.0
+color = Color(0.792157, 0.862745, 0.623529, 1)
+
+[node name="TopLeftBorder" type="NinePatchRect" parent="TopLeftField"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 57.0
+offset_bottom = 35.0
+texture = ExtResource("1_onei6")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Title" type="Label" parent="TopLeftField"]
+modulate = Color(0.188235, 0.384314, 0.235294, 1)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 54.0
+offset_bottom = 16.0
+theme_override_constants/line_spacing = 1
+theme_override_fonts/font = ExtResource("10_qxv5q")
+theme_override_font_sizes/font_size = 1
+text = "SUMMONING
+CIRCUITS"
+uppercase = true
+
+[node name="Title2" type="Label" parent="TopLeftField"]
+modulate = Color(0.188235, 0.384314, 0.235294, 1)
+layout_mode = 0
+offset_left = 3.0
+offset_top = 25.0
+offset_right = 52.0
+offset_bottom = 31.0
+theme_override_constants/line_spacing = 1
+theme_override_fonts/font = ExtResource("10_qxv5q")
+theme_override_font_sizes/font_size = 1
+text = "LEVEL 3"
+uppercase = true
+
+[node name="BottomLeftField" type="ColorRect" parent="."]
+offset_top = 34.0
+offset_right = 54.0
+offset_bottom = 88.0
+color = Color(0.792157, 0.862745, 0.623529, 1)
+
+[node name="BottomLeft" type="NinePatchRect" parent="BottomLeftField"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 57.0
+offset_bottom = 57.0
+texture = ExtResource("1_onei6")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="BottomLeftField"]
+modulate = Color(0.188235, 0.384314, 0.235294, 1)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 54.0
+offset_bottom = 54.0
+theme_override_constants/line_spacing = 1
+theme_override_fonts/font = ExtResource("10_qxv5q")
+theme_override_font_sizes/font_size = 1
+text = "RITUAL ORDER
+
+START NORTH
+GO EAST
+GO WEST
+FINISH"
+uppercase = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="BottomLeftField"]
+visible = false
+position = Vector2(18, 33)
+texture = ExtResource("11_uhhfw")
+
+[node name="Sprite2D" type="Sprite2D" parent="BottomLeftField"]
+visible = false
+modulate = Color(0.188235, 0.384314, 0.235294, 1)
+position = Vector2(18, 33)
+texture = ExtResource("12_5dwhq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="BottomLeftField"]
+visible = false
+position = Vector2(43, 33)
+texture = ExtResource("11_uhhfw")
+
+[node name="Sprite2D4" type="Sprite2D" parent="BottomLeftField"]
+visible = false
+modulate = Color(0.188235, 0.384314, 0.235294, 1)
+position = Vector2(43, 33)
+texture = ExtResource("13_n1nat")
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("runeList")]
+script = ExtResource("14_63tjo")
+runeList = [NodePath("../MainField/CircleOutline/Connectable/Rune"), NodePath("../MainField/CircleOutline/Connectable/Rune2"), NodePath("../MainField/CircleOutline/Connectable/Rune4"), NodePath("../MainField/CircleOutline/Connectable/Rune3")]
+
+[node name="winLabel" type="Label" parent="GameManager"]
+visible = false
+modulate = Color(0.545098, 0.67451, 0.0588235, 1)
+offset_left = 4.0
+offset_top = 75.0
+offset_right = 52.0
+offset_bottom = 87.0
+theme_override_constants/line_spacing = 1
+theme_override_fonts/font = ExtResource("10_qxv5q")
+theme_override_font_sizes/font_size = 1
+text = "SUCCESSfully
+SUMMONed"
+uppercase = true
+
+[node name="victory" type="Label" parent="GameManager"]
+visible = false
+modulate = Color(0.545098, 0.67451, 0.0588235, 1)
+offset_left = 4.0
+offset_top = 75.0
+offset_right = 52.0
+offset_bottom = 87.0
+theme_override_constants/line_spacing = 1
+theme_override_fonts/font = ExtResource("10_qxv5q")
+theme_override_font_sizes/font_size = 1
+text = "ALL SUMMONS
+COMPLETED"
+uppercase = true
+
+[node name="failLabel" type="Label" parent="GameManager"]
+visible = false
+modulate = Color(0.545098, 0.67451, 0.0588235, 1)
+offset_left = 3.0
+offset_top = 75.0
+offset_right = 59.0
+offset_bottom = 87.0
+theme_override_constants/line_spacing = 1
+theme_override_fonts/font = ExtResource("10_qxv5q")
+theme_override_font_sizes/font_size = 1
+text = "THE SUMMONING
+HAS FAILED"
+uppercase = true
+
+[connection signal="input_event" from="MainField/RunButton/Area2D" to="GameManager" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="MainField/RunButton/Area2D" to="GameManager" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="MainField/RunButton/Area2D" to="GameManager" method="_on_area_2d_mouse_exited"]

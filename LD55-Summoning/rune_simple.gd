@@ -61,15 +61,17 @@ func set_glyph(type:String):
 
 func trigger():
 	if not triggered:
+		gameManager.runeLight(self)
 		triggered = true
 		glyph.modulate = "44ddff"
 		for pad in padList:
 			pad.modulate = "44ddff"
 		await get_tree().create_timer(0.2).timeout
-		for thing in connections:
-			if not thing == null and thing.has_method("trigger") and not thing.triggered:
-				if not "selected" in thing or thing.selected:
-					thing.trigger()
+		if not gameManager.bonked:
+			for thing in connections:
+				if not thing == null and thing.has_method("trigger") and not thing.triggered:
+					if not "selected" in thing or thing.selected:
+						thing.trigger()
 
 func reset():
 	triggered = false

@@ -31,10 +31,12 @@ func set_selected(val:bool):
 	selected = val
 	if val:
 		modulate = "30623c"
+		#z_index = 0
 		#collisionEnd1.set_deferred("disabled",false)
 		#collisionEnd2.set_deferred("disabled",false)
 	else:
 		modulate = "8bac0f"
+		#z_index = 10
 		#collisionEnd1.set_deferred("disabled",true)
 		#collisionEnd2.set_deferred("disabled",true)
 
@@ -50,11 +52,14 @@ func trigger():
 		triggered = true
 		modulate = "44ddff"
 		await get_tree().create_timer(0.2).timeout
-		for thing in connections:
-			if thing.has_method("trigger") and not thing.triggered:
-				thing.trigger()
+		if not gameManager.bonked:
+			for thing in connections:
+				if not thing == null and thing.has_method("trigger") and not thing.triggered:
+					if not "selected" in thing or thing.selected:
+						thing.trigger()
 
 func reset():
+	z_index = 0
 	triggered = false
 	if selected:
 		modulate = "30623c"

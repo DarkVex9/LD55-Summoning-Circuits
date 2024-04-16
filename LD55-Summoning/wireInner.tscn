@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://05m587qfav24"]
+
+[ext_resource type="Texture2D" uid="uid://cnt3jkgx6xjvi" path="res://Assets/Connections/InnerSegment.png" id="1_hu7xv"]
+[ext_resource type="Script" path="res://Wire.gd" id="2_cqa12"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ho5fx"]
+size = Vector2(14, 6)
+
+[node name="Wire" type="Sprite2D"]
+modulate = Color(0.545098, 0.67451, 0.0588235, 1)
+z_index = 1
+position = Vector2(53, 20)
+texture = ExtResource("1_hu7xv")
+script = ExtResource("2_cqa12")
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+rotation = 0.232129
+shape = SubResource("RectangleShape2D_ho5fx")
+
+[connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
+[connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]
+[connection signal="mouse_exited" from="ClickArea" to="." method="_on_click_area_mouse_exited"]

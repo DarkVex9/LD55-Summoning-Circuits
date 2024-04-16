@@ -1,10 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyt4hu3jkbj83"]
+[gd_scene load_steps=4 format=3 uid="uid://cyt4hu3jkbj83"]
 
 [ext_resource type="Texture2D" uid="uid://d3lrrq2jmd1vd" path="res://Assets/Connections/MiddleSegmentShort.png" id="1_t0ttp"]
 [ext_resource type="Script" path="res://Wire.gd" id="2_qyvnl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jmcq"]
-size = Vector2(4, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ho5fx"]
 size = Vector2(20, 6)
@@ -15,18 +12,6 @@ z_index = 1
 position = Vector2(53, 20)
 texture = ExtResource("1_t0ttp")
 script = ExtResource("2_qyvnl")
-
-[node name="AreaEnd1" type="Area2D" parent="."]
-position = Vector2(-7, -4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaEnd1"]
-shape = SubResource("RectangleShape2D_4jmcq")
-
-[node name="AreaEnd2" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaEnd2"]
-position = Vector2(6, 3)
-shape = SubResource("RectangleShape2D_4jmcq")
 
 [node name="ClickArea" type="Area2D" parent="."]
 

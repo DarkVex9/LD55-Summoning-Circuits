@@ -1,0 +1,393 @@
+[gd_scene load_steps=20 format=3 uid="uid://csbitticyrdoi"]
+
+[ext_resource type="Texture2D" uid="uid://7xtbm0cnlbae" path="res://Assets/Border9.png" id="1_hv46d"]
+[ext_resource type="Texture2D" uid="uid://e1668rvgxq6l" path="res://Assets/OuterCircle.png" id="2_l74t7"]
+[ext_resource type="Texture2D" uid="uid://ch2cwkrvvn23l" path="res://Assets/Guide1.png" id="3_3u343"]
+[ext_resource type="PackedScene" uid="uid://cbv3syepkkqhx" path="res://rune.tscn" id="4_xiohb"]
+[ext_resource type="Script" path="res://rune_simple.gd" id="5_5ntpm"]
+[ext_resource type="PackedScene" uid="uid://cyt4hu3jkbj83" path="res://wire.tscn" id="6_gvyy7"]
+[ext_resource type="PackedScene" uid="uid://05m587qfav24" path="res://wireInner.tscn" id="8_ondgk"]
+[ext_resource type="PackedScene" uid="uid://cg8a0b21c17jc" path="res://wireDiagonalToInner.tscn" id="9_slte3"]
+[ext_resource type="Texture2D" uid="uid://cj70uufn8y7tq" path="res://Assets/playButton.png" id="10_hawww"]
+[ext_resource type="Texture2D" uid="uid://bdrvnks6y01lr" path="res://Assets/RuneCircle.png" id="11_caapq"]
+[ext_resource type="FontFile" uid="uid://dpitwllywq602" path="res://Assets/Font.png" id="11_wu0ll"]
+[ext_resource type="Texture2D" uid="uid://dqyex5xjt8vrd" path="res://Assets/Glyphs/RuneI.png" id="12_4abkc"]
+[ext_resource type="Script" path="res://GameManager.gd" id="12_yk7rm"]
+[ext_resource type="Texture2D" uid="uid://b1vmxukc10cx6" path="res://Assets/Glyphs/RuneR.png" id="13_55sam"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yot3a"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15oct"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4owcc"]
+size = Vector2(10, 10)
+
+[sub_resource type="PackedScene" id="PackedScene_4tkxc"]
+_bundled = {
+"conn_count": 3,
+"conns": PackedInt32Array(31, 40, 84, 83, 2, 0, 0, 31, 40, 86, 85, 2, 0, 0, 31, 40, 88, 87, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Puzzle", "Node2D", "MainField", "offset_left", "offset_right", "offset_bottom", "mouse_filter", "color", "ColorRect", "ScreenBorder 160x90", "layout_mode", "offset_top", "texture", "patch_margin_left", "patch_margin_top", "patch_margin_right", "patch_margin_bottom", "NinePatchRect", "CircleOutline", "TextureRect", "GuideCircle", "visible", "anchors_preset", "anchor_left", "anchor_top", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "Connectable", "Rune", "script", "glyphType", "enabledPads", "connections", "Rune2", "position", "Rune3", "Rune4", "WireMid1", "WireMid2", "rotation", "scale", "WireMid3", "WireMid4", "WireMid5", "WireMid6", "WireMid7", "WireMid8", "WireInner", "WireInner2", "WireInner3", "WireInner4", "WireInner5", "WireInner6", "WireInner7", "WireInner8", "InnerToMidDiagonal", "InnerToMidDiagonal2", "InnerToMidDiagonal3", "InnerToMidDiagonal4", "RunButton", "Area2D", "CollisionShape2D", "shape", "TopLeftField", "TopLeftBorder", "Title", "modulate", "theme_override_constants/line_spacing", "theme_override_fonts/font", "theme_override_font_sizes/font_size", "text", "uppercase", "Label", "Title2", "BottomLeftField", "BottomLeft", "GameManager", "runeList", "Node", "winLabel", "failLabel", "_on_area_2d_input_event", "input_event", "_on_area_2d_mouse_entered", "mouse_entered", "_on_area_2d_mouse_exited", "mouse_exited"),
+"node_count": 43,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 0, 0, 0, 0, 8, 2, -1, 5, 3, 0, 4, 1, 5, 2, 6, 3, 7, 4, 0, 1, 0, 17, 9, -1, 10, 10, 5, 3, 6, 11, 7, 4, 8, 5, 9, 12, 10, 13, 11, 14, 11, 15, 11, 16, 11, 0, 1, 0, 19, 18, -1, 6, 10, 5, 3, 12, 11, 13, 4, 14, 5, 15, 12, 16, 0, 3, 0, 19, 20, -1, 14, 21, 17, 10, 3, 22, 18, 23, 19, 24, 19, 25, 19, 26, 19, 3, 20, 11, 20, 4, 21, 5, 21, 27, 22, 28, 22, 12, 23, 0, 3, 0, 1, 29, -1, 0, 0, 5, 0, 2147483647, 30, 24, 4, 31, 25, 32, 26, 33, 27, 1073741858, 28, 0, 5, 0, 2147483647, 35, 24, 5, 36, 29, 31, 25, 32, 30, 33, 31, 1073741858, 32, 0, 5, 0, 2147483647, 37, 24, 5, 36, 33, 31, 25, 32, 34, 33, 35, 1073741858, 36, 0, 5, 0, 2147483647, 38, 24, 5, 36, 37, 31, 25, 32, 34, 33, 31, 1073741858, 38, 0, 5, 0, 2147483647, 39, 39, 1, 1073741858, 40, 0, 5, 0, 2147483647, 40, 39, 4, 36, 41, 41, 42, 42, 43, 1073741858, 44, 0, 5, 0, 2147483647, 43, 39, 4, 36, 45, 41, 42, 42, 46, 1073741858, 47, 0, 5, 0, 2147483647, 44, 39, 3, 36, 48, 42, 43, 1073741858, 49, 0, 5, 0, 2147483647, 45, 39, 3, 36, 50, 42, 46, 1073741858, 51, 0, 5, 0, 2147483647, 46, 39, 4, 36, 52, 41, 53, 42, 43, 1073741858, 54, 0, 5, 0, 2147483647, 47, 39, 4, 36, 55, 41, 53, 42, 46, 1073741858, 56, 0, 5, 0, 2147483647, 48, 39, 3, 36, 57, 42, 58, 1073741858, 59, 0, 5, 0, 2147483647, 49, 60, 2, 36, 61, 1073741858, 62, 0, 5, 0, 2147483647, 50, 60, 4, 36, 63, 41, 53, 42, 58, 1073741858, 64, 0, 5, 0, 2147483647, 51, 60, 4, 36, 65, 41, 42, 42, 46, 1073741858, 66, 0, 5, 0, 2147483647, 52, 60, 3, 36, 67, 42, 43, 1073741858, 68, 0, 5, 0, 2147483647, 53, 60, 2, 36, 69, 1073741858, 70, 0, 5, 0, 2147483647, 54, 60, 4, 36, 71, 41, 53, 42, 43, 1073741858, 72, 0, 5, 0, 2147483647, 55, 60, 4, 36, 73, 41, 53, 42, 46, 1073741858, 74, 0, 5, 0, 2147483647, 56, 60, 3, 36, 75, 42, 58, 1073741858, 76, 0, 5, 0, 2147483647, 57, 77, 2, 36, 78, 1073741858, 79, 0, 5, 0, 2147483647, 58, 77, 3, 36, 80, 41, 53, 1073741858, 81, 0, 5, 0, 2147483647, 59, 77, 2, 36, 82, 1073741858, 83, 0, 5, 0, 2147483647, 60, 77, 3, 36, 84, 41, 53, 1073741858, 85, 0, 1, 0, 19, 61, -1, 6, 10, 5, 3, 86, 11, 13, 4, 12, 5, 87, 12, 88, 0, 30, 0, 62, 62, -1, 0, 0, 31, 0, 63, 63, -1, 2, 36, 89, 64, 90, 0, 0, 0, 8, 65, -1, 3, 4, 91, 5, 92, 7, 4, 0, 33, 0, 17, 66, -1, 10, 10, 5, 3, 7, 11, 7, 4, 93, 5, 94, 12, 10, 13, 11, 14, 11, 15, 11, 16, 11, 0, 33, 0, 74, 67, -1, 11, 68, 95, 10, 5, 3, 13, 11, 13, 4, 91, 5, 96, 69, 3, 70, 97, 71, 3, 72, 98, 73, 99, 0, 33, 0, 74, 75, -1, 11, 68, 95, 10, 5, 3, 100, 11, 101, 4, 102, 5, 103, 69, 3, 70, 97, 71, 3, 72, 104, 73, 99, 0, 0, 0, 8, 76, -1, 4, 11, 92, 4, 91, 5, 105, 7, 4, 0, 37, 0, 17, 77, -1, 10, 10, 5, 3, 7, 11, 106, 4, 93, 5, 93, 12, 10, 13, 11, 14, 11, 15, 11, 16, 11, 0, 37, 0, 74, 74, -1, 11, 68, 95, 10, 5, 3, 13, 11, 107, 4, 91, 5, 91, 69, 3, 70, 97, 71, 3, 72, 108, 73, 99, 0, 0, 0, 80, 78, -1, 2, 31, 109, 1073741903, 110, 0, 40, 0, 74, 81, -1, 11, 21, 17, 68, 111, 3, 13, 11, 112, 4, 102, 5, 113, 69, 3, 70, 97, 71, 3, 72, 114, 73, 99, 0, 40, 0, 74, 82, -1, 10, 68, 111, 3, 100, 11, 112, 4, 115, 5, 113, 69, 3, 70, 97, 71, 3, 72, 116, 73, 99, 0),
+"variants": [48.0, 160.0, 90.0, 1, Color(0.792157, 0.862745, 0.623529, 1), 0, -49.0, -1.0, 113.0, 91.0, ExtResource("1_hv46d"), 5, 20.0, 4.0, 102.0, 86.0, ExtResource("2_l74t7"), false, 8, 0.5, -28.0, 28.0, 2, ExtResource("3_3u343"), ExtResource("4_xiohb"), ExtResource("5_5ntpm"), "A", Array[bool]([false, true, false, true]), [NodePath("../WireMid1")], Vector2(66, 41), "R", Array[bool]([true, false, true, false]), [NodePath("../WireMid2"), NodePath("../WireMid3")], Vector2(41, 66), "Y", Array[bool]([true, true, false, true]), [NodePath("../WireMid6"), NodePath("../WireInner4"), NodePath("../WireInner5")], Vector2(16, 41), [NodePath("../WireMid6"), NodePath("../WireMid7")], ExtResource("6_gvyy7"), [NodePath("../Rune"), NodePath("../WireMid2"), NodePath("../InnerToMidDiagonal")], Vector2(62, 29), -1.5708, Vector2(1, -1), [NodePath("../WireMid1"), NodePath("../Rune2"), NodePath("../InnerToMidDiagonal")], Vector2(62, 53), Vector2(-1, -1), [NodePath("../Rune2"), NodePath("../WireMid4"), NodePath("../InnerToMidDiagonal2")], Vector2(53, 62), [NodePath("../WireMid3"), NodePath("../WireMid5"), NodePath("../InnerToMidDiagonal2")], Vector2(29, 62), [NodePath("../WireMid4"), NodePath("../WireMid6"), NodePath("../InnerToMidDiagonal3")], Vector2(20, 53), 1.5708, [NodePath("../WireMid5"), NodePath("../Rune4"), NodePath("../InnerToMidDiagonal3")], Vector2(20, 29), [NodePath("../WireInner8"), NodePath("../InnerToMidDiagonal4"), NodePath("../Rune4")], Vector2(29, 20), Vector2(-1, 1), [NodePath("../Rune"), NodePath("../WireMid7"), NodePath("../InnerToMidDiagonal4")], ExtResource("8_ondgk"), Vector2(47, 27), [NodePath("../WireInner2"), NodePath("../WireInner8"), NodePath("../InnerToMidDiagonal")], Vector2(55, 35), [NodePath("../WireInner"), NodePath("../WireInner3"), NodePath("../InnerToMidDiagonal")], Vector2(55, 47), [NodePath("../WireInner2"), NodePath("../WireInner4"), NodePath("../InnerToMidDiagonal2")], Vector2(47, 55), [NodePath("../WireInner3"), NodePath("../WireInner5"), NodePath("../InnerToMidDiagonal2"), NodePath("../Rune3")], Vector2(35, 55), [NodePath("../WireInner6"), NodePath("../WireInner4"), NodePath("../InnerToMidDiagonal3"), NodePath("../Rune3")], Vector2(27, 47), [NodePath("../WireInner5"), NodePath("../WireInner7"), NodePath("../InnerToMidDiagonal3")], Vector2(27, 35), [NodePath("../WireInner8"), NodePath("../WireInner6"), NodePath("../InnerToMidDiagonal4")], Vector2(35, 27), [NodePath("../WireInner"), NodePath("../WireInner7"), NodePath("../InnerToMidDiagonal4")], ExtResource("9_slte3"), Vector2(56, 26), [NodePath("../WireInner"), NodePath("../WireInner2"), NodePath("../WireMid1"), NodePath("../WireMid2")], Vector2(56, 56), [NodePath("../WireMid3"), NodePath("../WireMid4"), NodePath("../WireInner3"), NodePath("../WireInner4")], Vector2(26, 56), [NodePath("../WireMid5"), NodePath("../WireMid6"), NodePath("../WireInner5"), NodePath("../WireInner6")], Vector2(26, 26), [NodePath("../WireMid8"), NodePath("../WireMid7"), NodePath("../WireInner7"), NodePath("../WireInner8")], 10.0, 14.0, ExtResource("10_hawww"), Vector2(5, 5), SubResource("RectangleShape2D_4owcc"), 54.0, 34.0, 57.0, 35.0, Color(0.188235, 0.384314, 0.235294, 1), 16.0, ExtResource("11_wu0ll"), "SUMMONING
+CIRCUITS", true, 3.0, 25.0, 52.0, 31.0, "LEVEL X", 88.0, -3.0, 2.0, "RITUAL ORDER
+
+START NORTH
+GO OPPOSITE
+CLOCKWISE
+FINISH", ExtResource("12_yk7rm"), [NodePath("../MainField/CircleOutline/Connectable/Rune"), null, null], Color(0.545098, 0.67451, 0.0588235, 1), 75.0, 87.0, "SUCCESSfully
+SUMMONed", 59.0, "THE SUMMONING
+HAS FAILED"],
+"version": 3
+}
+
+[sub_resource type="PackedScene" id="PackedScene_hpo7g"]
+_bundled = {
+"conn_count": 3,
+"conns": PackedInt32Array(31, 44, 90, 89, 2, 0, 0, 31, 44, 92, 91, 2, 0, 0, 31, 44, 94, 93, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Puzzle", "Node2D", "MainField", "offset_left", "offset_right", "offset_bottom", "mouse_filter", "color", "ColorRect", "ScreenBorder 160x90", "layout_mode", "offset_top", "texture", "patch_margin_left", "patch_margin_top", "patch_margin_right", "patch_margin_bottom", "NinePatchRect", "CircleOutline", "TextureRect", "GuideCircle", "visible", "anchors_preset", "anchor_left", "anchor_top", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "Connectable", "Rune", "z_index", "script", "glyphType", "enabledPads", "connections", "Rune2", "position", "Rune3", "Rune4", "WireMid1", "WireMid2", "rotation", "scale", "WireMid3", "WireMid4", "WireMid5", "WireMid6", "WireMid7", "WireMid8", "WireInner", "WireInner2", "WireInner3", "WireInner4", "WireInner5", "WireInner6", "WireInner7", "WireInner8", "InnerToMidDiagonal", "InnerToMidDiagonal2", "InnerToMidDiagonal3", "InnerToMidDiagonal4", "RunButton", "Area2D", "CollisionShape2D", "shape", "TopLeftField", "TopLeftBorder", "Title", "modulate", "theme_override_constants/line_spacing", "theme_override_fonts/font", "theme_override_font_sizes/font_size", "text", "uppercase", "Label", "Title2", "BottomLeftField", "BottomLeft", "Sprite2D2", "Sprite2D", "Sprite2D3", "Sprite2D4", "GameManager", "runeList", "nextPuzzle", "Node", "winLabel", "failLabel", "_on_area_2d_input_event", "input_event", "_on_area_2d_mouse_entered", "mouse_entered", "_on_area_2d_mouse_exited", "mouse_exited"),
+"node_count": 47,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 0, 0, 0, 0, 8, 2, -1, 5, 3, 0, 4, 1, 5, 2, 6, 3, 7, 4, 0, 1, 0, 17, 9, -1, 10, 10, 5, 3, 6, 11, 7, 4, 8, 5, 9, 12, 10, 13, 11, 14, 11, 15, 11, 16, 11, 0, 1, 0, 19, 18, -1, 6, 10, 5, 3, 12, 11, 13, 4, 14, 5, 15, 12, 16, 0, 3, 0, 19, 20, -1, 14, 21, 17, 10, 3, 22, 18, 23, 19, 24, 19, 25, 19, 26, 19, 3, 20, 11, 20, 4, 21, 5, 21, 27, 22, 28, 22, 12, 23, 0, 3, 0, 1, 29, -1, 0, 0, 5, 0, 2147483647, 30, 24, 5, 31, 22, 32, 25, 33, 26, 34, 27, 1073741859, 28, 0, 5, 0, 2147483647, 36, 24, 6, 31, 22, 37, 29, 32, 25, 33, 30, 34, 31, 1073741859, 32, 0, 5, 0, 2147483647, 38, 24, 6, 31, 22, 37, 33, 32, 25, 33, 34, 34, 35, 1073741859, 36, 0, 5, 0, 2147483647, 39, 24, 6, 31, 22, 37, 37, 32, 25, 33, 38, 34, 31, 1073741859, 39, 0, 5, 0, 2147483647, 40, 40, 1, 1073741859, 41, 0, 5, 0, 2147483647, 41, 40, 4, 37, 42, 42, 43, 43, 44, 1073741859, 45, 0, 5, 0, 2147483647, 44, 40, 4, 37, 46, 42, 43, 43, 47, 1073741859, 48, 0, 5, 0, 2147483647, 45, 40, 3, 37, 49, 43, 44, 1073741859, 50, 0, 5, 0, 2147483647, 46, 40, 3, 37, 51, 43, 47, 1073741859, 52, 0, 5, 0, 2147483647, 47, 40, 4, 37, 53, 42, 54, 43, 44, 1073741859, 55, 0, 5, 0, 2147483647, 48, 40, 4, 37, 56, 42, 54, 43, 47, 1073741859, 57, 0, 5, 0, 2147483647, 49, 40, 3, 37, 58, 43, 59, 1073741859, 60, 0, 5, 0, 2147483647, 50, 61, 2, 37, 62, 1073741859, 63, 0, 5, 0, 2147483647, 51, 61, 4, 37, 64, 42, 54, 43, 59, 1073741859, 65, 0, 5, 0, 2147483647, 52, 61, 4, 37, 66, 42, 43, 43, 47, 1073741859, 67, 0, 5, 0, 2147483647, 53, 61, 3, 37, 68, 43, 44, 1073741859, 69, 0, 5, 0, 2147483647, 54, 61, 2, 37, 70, 1073741859, 71, 0, 5, 0, 2147483647, 55, 61, 4, 37, 72, 42, 54, 43, 44, 1073741859, 73, 0, 5, 0, 2147483647, 56, 61, 4, 37, 74, 42, 54, 43, 47, 1073741859, 75, 0, 5, 0, 2147483647, 57, 61, 3, 37, 76, 43, 59, 1073741859, 77, 0, 5, 0, 2147483647, 58, 78, 2, 37, 79, 1073741859, 80, 0, 5, 0, 2147483647, 59, 78, 3, 37, 81, 42, 54, 1073741859, 82, 0, 5, 0, 2147483647, 60, 78, 2, 37, 83, 1073741859, 84, 0, 5, 0, 2147483647, 61, 78, 3, 37, 85, 42, 54, 1073741859, 86, 0, 1, 0, 19, 62, -1, 6, 10, 5, 3, 87, 11, 13, 4, 12, 5, 88, 12, 89, 0, 30, 0, 63, 63, -1, 0, 0, 31, 0, 64, 64, -1, 2, 37, 90, 65, 91, 0, 0, 0, 8, 66, -1, 3, 4, 92, 5, 93, 7, 4, 0, 33, 0, 17, 67, -1, 10, 10, 5, 3, 7, 11, 7, 4, 94, 5, 95, 12, 10, 13, 11, 14, 11, 15, 11, 16, 11, 0, 33, 0, 75, 68, -1, 11, 69, 96, 10, 5, 3, 13, 11, 13, 4, 92, 5, 97, 70, 3, 71, 98, 72, 3, 73, 99, 74, 100, 0, 33, 0, 75, 76, -1, 11, 69, 96, 10, 5, 3, 101, 11, 102, 4, 103, 5, 104, 70, 3, 71, 98, 72, 3, 73, 105, 74, 100, 0, 0, 0, 8, 77, -1, 4, 11, 93, 4, 92, 5, 106, 7, 4, 0, 37, 0, 17, 78, -1, 10, 10, 5, 3, 7, 11, 107, 4, 94, 5, 94, 12, 10, 13, 11, 14, 11, 15, 11, 16, 11, 0, 37, 0, 75, 75, -1, 11, 69, 96, 10, 5, 3, 13, 11, 108, 4, 92, 5, 92, 70, 22, 71, 98, 72, 3, 73, 109, 74, 100, 0, 37, 0, 80, 79, -1, 2, 37, 110, 12, 111, 0, 37, 0, 80, 80, -1, 3, 69, 96, 37, 110, 12, 112, 0, 37, 0, 80, 81, -1, 2, 37, 113, 12, 111, 0, 37, 0, 80, 82, -1, 3, 69, 96, 37, 113, 12, 114, 0, 0, 0, 86, 83, -1, 3, 32, 115, 1073741908, 116, 85, 117, 0, 44, 0, 75, 87, -1, 11, 21, 17, 69, 118, 3, 13, 11, 119, 4, 103, 5, 120, 70, 3, 71, 98, 72, 3, 73, 121, 74, 100, 0, 44, 0, 75, 88, -1, 10, 69, 118, 3, 101, 11, 119, 4, 122, 5, 120, 70, 3, 71, 98, 72, 3, 73, 123, 74, 100, 0),
+"variants": [48.0, 160.0, 90.0, 1, Color(0.792157, 0.862745, 0.623529, 1), 0, -49.0, -1.0, 113.0, 91.0, ExtResource("1_hv46d"), 5, 20.0, 4.0, 102.0, 86.0, ExtResource("2_l74t7"), false, 8, 0.5, -28.0, 28.0, 2, ExtResource("3_3u343"), ExtResource("4_xiohb"), ExtResource("5_5ntpm"), "A", Array[bool]([false, true, false, true]), [NodePath("../WireMid1"), NodePath("../WireMid8")], Vector2(66, 41), "R", Array[bool]([true, false, true, false]), [NodePath("../WireMid2"), NodePath("../WireMid3")], Vector2(41, 66), "C", Array[bool]([true, true, false, true]), [NodePath("../WireInner4"), NodePath("../WireInner5"), NodePath("../WireMid4"), NodePath("../WireMid5")], Vector2(16, 41), "I", [NodePath("../WireMid6"), NodePath("../WireMid7")], ExtResource("6_gvyy7"), [NodePath("../Rune"), NodePath("../WireMid2"), NodePath("../InnerToMidDiagonal")], Vector2(62, 29), -1.5708, Vector2(1, -1), [NodePath("../WireMid1"), NodePath("../Rune2"), NodePath("../InnerToMidDiagonal")], Vector2(62, 53), Vector2(-1, -1), [NodePath("../Rune2"), NodePath("../WireMid4"), NodePath("../InnerToMidDiagonal2")], Vector2(53, 62), [NodePath("../WireMid3"), NodePath("../WireMid5"), NodePath("../InnerToMidDiagonal2")], Vector2(29, 62), [NodePath("../WireMid4"), NodePath("../WireMid6"), NodePath("../InnerToMidDiagonal3")], Vector2(20, 53), 1.5708, [NodePath("../WireMid5"), NodePath("../Rune4"), NodePath("../InnerToMidDiagonal3")], Vector2(20, 29), [NodePath("../WireInner8"), NodePath("../InnerToMidDiagonal4"), NodePath("../Rune4")], Vector2(29, 20), Vector2(-1, 1), [NodePath("../Rune"), NodePath("../WireMid7"), NodePath("../InnerToMidDiagonal4")], ExtResource("8_ondgk"), Vector2(47, 27), [NodePath("../WireInner2"), NodePath("../WireInner8"), NodePath("../InnerToMidDiagonal")], Vector2(55, 35), [NodePath("../WireInner"), NodePath("../WireInner3"), NodePath("../InnerToMidDiagonal")], Vector2(55, 47), [NodePath("../WireInner2"), NodePath("../WireInner4"), NodePath("../InnerToMidDiagonal2")], Vector2(47, 55), [NodePath("../WireInner3"), NodePath("../WireInner5"), NodePath("../InnerToMidDiagonal2"), NodePath("../Rune3")], Vector2(35, 55), [NodePath("../WireInner6"), NodePath("../WireInner4"), NodePath("../InnerToMidDiagonal3"), NodePath("../Rune3")], Vector2(27, 47), [NodePath("../WireInner5"), NodePath("../WireInner7"), NodePath("../InnerToMidDiagonal3")], Vector2(27, 35), [NodePath("../WireInner8"), NodePath("../WireInner6"), NodePath("../InnerToMidDiagonal4")], Vector2(35, 27), [NodePath("../WireInner"), NodePath("../WireInner7"), NodePath("../InnerToMidDiagonal4")], ExtResource("9_slte3"), Vector2(56, 26), [NodePath("../WireInner"), NodePath("../WireInner2"), NodePath("../WireMid1"), NodePath("../WireMid2")], Vector2(56, 56), [NodePath("../WireMid3"), NodePath("../WireMid4"), NodePath("../WireInner3"), NodePath("../WireInner4")], Vector2(26, 56), [NodePath("../WireMid5"), NodePath("../WireMid6"), NodePath("../WireInner5"), NodePath("../WireInner6")], Vector2(26, 26), [NodePath("../WireMid8"), NodePath("../WireMid7"), NodePath("../WireInner7"), NodePath("../WireInner8")], 10.0, 14.0, ExtResource("10_hawww"), Vector2(5, 5), SubResource("RectangleShape2D_15oct"), 54.0, 34.0, 57.0, 35.0, Color(0.188235, 0.384314, 0.235294, 1), 16.0, ExtResource("11_wu0ll"), "SUMMONING
+CIRCUITS", true, 3.0, 25.0, 52.0, 31.0, "LEVEL 2", 88.0, -3.0, 2.0, "RITUAL ORDER
+
+START NORTH
+GO OPPOSITE
+GO    GO", Vector2(18, 33), ExtResource("11_caapq"), ExtResource("12_4abkc"), Vector2(43, 33), ExtResource("13_55sam"), ExtResource("12_yk7rm"), [NodePath("../MainField/CircleOutline/Connectable/Rune"), NodePath("../MainField/CircleOutline/Connectable/Rune3"), NodePath("../MainField/CircleOutline/Connectable/Rune4"), NodePath("../MainField/CircleOutline/Connectable/Rune2")], SubResource("PackedScene_4tkxc"), Color(0.545098, 0.67451, 0.0588235, 1), 75.0, 87.0, "SUCCESSfully
+SUMMONed", 59.0, "THE SUMMONING
+HAS FAILED"],
+"version": 3
+}
+
+[node name="Puzzle" type="Node2D"]
+
+[node name="MainField" type="ColorRect" parent="."]
+offset_left = 48.0
+offset_right = 160.0
+offset_bottom = 90.0
+mouse_filter = 1
+color = Color(0.792157, 0.862745, 0.623529, 1)
+
+[node name="ScreenBorder 160x90" type="NinePatchRect" parent="MainField"]
+layout_mode = 0
+offset_left = -49.0
+offset_top = -1.0
+offset_right = 113.0
+offset_bottom = 91.0
+texture = ExtResource("1_hv46d")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="CircleOutline" type="TextureRect" parent="MainField"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 102.0
+offset_bottom = 86.0
+texture = ExtResource("2_l74t7")
+
+[node name="GuideCircle" type="TextureRect" parent="MainField/CircleOutline"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3u343")
+
+[node name="Connectable" type="Node2D" parent="MainField/CircleOutline"]
+
+[node name="Rune" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("4_xiohb")]
+z_index = 2
+script = ExtResource("5_5ntpm")
+glyphType = "A"
+enabledPads = Array[bool]([false, true, false, true])
+connections = [NodePath("../WireMid1"), NodePath("../WireMid8")]
+
+[node name="Rune2" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("4_xiohb")]
+z_index = 2
+position = Vector2(66, 41)
+script = ExtResource("5_5ntpm")
+glyphType = "R"
+enabledPads = Array[bool]([true, false, true, false])
+connections = [NodePath("../WireMid2"), NodePath("../WireMid3")]
+
+[node name="Rune3" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("4_xiohb")]
+z_index = 2
+position = Vector2(41, 66)
+script = ExtResource("5_5ntpm")
+glyphType = "C"
+enabledPads = Array[bool]([true, true, false, true])
+connections = [NodePath("../WireInner4"), NodePath("../WireInner5"), NodePath("../WireMid4"), NodePath("../WireMid5")]
+
+[node name="Rune4" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("4_xiohb")]
+z_index = 2
+position = Vector2(16, 41)
+script = ExtResource("5_5ntpm")
+glyphType = "I"
+enabledPads = Array[bool]([true, false, true, false])
+connections = [NodePath("../WireMid6"), NodePath("../WireMid7")]
+
+[node name="WireMid1" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_gvyy7")]
+connections = [NodePath("../Rune"), NodePath("../WireMid2"), NodePath("../InnerToMidDiagonal")]
+
+[node name="WireMid2" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_gvyy7")]
+position = Vector2(62, 29)
+rotation = -1.5708
+scale = Vector2(1, -1)
+connections = [NodePath("../WireMid1"), NodePath("../Rune2"), NodePath("../InnerToMidDiagonal")]
+
+[node name="WireMid3" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_gvyy7")]
+position = Vector2(62, 53)
+rotation = -1.5708
+scale = Vector2(-1, -1)
+connections = [NodePath("../Rune2"), NodePath("../WireMid4"), NodePath("../InnerToMidDiagonal2")]
+
+[node name="WireMid4" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_gvyy7")]
+position = Vector2(53, 62)
+scale = Vector2(1, -1)
+connections = [NodePath("../WireMid3"), NodePath("../WireMid5"), NodePath("../InnerToMidDiagonal2")]
+
+[node name="WireMid5" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_gvyy7")]
+position = Vector2(29, 62)
+scale = Vector2(-1, -1)
+connections = [NodePath("../WireMid4"), NodePath("../WireMid6"), NodePath("../InnerToMidDiagonal3")]
+
+[node name="WireMid6" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_gvyy7")]
+position = Vector2(20, 53)
+rotation = 1.5708
+scale = Vector2(1, -1)
+connections = [NodePath("../WireMid5"), NodePath("../Rune4"), NodePath("../InnerToMidDiagonal3")]
+
+[node name="WireMid7" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_gvyy7")]
+position = Vector2(20, 29)
+rotation = 1.5708
+scale = Vector2(-1, -1)
+connections = [NodePath("../WireInner8"), NodePath("../InnerToMidDiagonal4"), NodePath("../Rune4")]
+
+[node name="WireMid8" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_gvyy7")]
+position = Vector2(29, 20)
+scale = Vector2(-1, 1)
+connections = [NodePath("../Rune"), NodePath("../WireMid7"), NodePath("../InnerToMidDiagonal4")]
+
+[node name="WireInner" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("8_ondgk")]
+position = Vector2(47, 27)
+connections = [NodePath("../WireInner2"), NodePath("../WireInner8"), NodePath("../InnerToMidDiagonal")]
+
+[node name="WireInner2" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("8_ondgk")]
+position = Vector2(55, 35)
+rotation = 1.5708
+scale = Vector2(-1, 1)
+connections = [NodePath("../WireInner"), NodePath("../WireInner3"), NodePath("../InnerToMidDiagonal")]
+
+[node name="WireInner3" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("8_ondgk")]
+position = Vector2(55, 47)
+rotation = -1.5708
+scale = Vector2(-1, -1)
+connections = [NodePath("../WireInner2"), NodePath("../WireInner4"), NodePath("../InnerToMidDiagonal2")]
+
+[node name="WireInner4" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("8_ondgk")]
+position = Vector2(47, 55)
+scale = Vector2(1, -1)
+connections = [NodePath("../WireInner3"), NodePath("../WireInner5"), NodePath("../InnerToMidDiagonal2"), NodePath("../Rune3")]
+
+[node name="WireInner5" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("8_ondgk")]
+position = Vector2(35, 55)
+connections = [NodePath("../WireInner6"), NodePath("../WireInner4"), NodePath("../InnerToMidDiagonal3"), NodePath("../Rune3")]
+
+[node name="WireInner6" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("8_ondgk")]
+position = Vector2(27, 47)
+rotation = 1.5708
+scale = Vector2(1, -1)
+connections = [NodePath("../WireInner5"), NodePath("../WireInner7"), NodePath("../InnerToMidDiagonal3")]
+
+[node name="WireInner7" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("8_ondgk")]
+position = Vector2(27, 35)
+rotation = 1.5708
+scale = Vector2(-1, -1)
+connections = [NodePath("../WireInner8"), NodePath("../WireInner6"), NodePath("../InnerToMidDiagonal4")]
+
+[node name="WireInner8" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("8_ondgk")]
+position = Vector2(35, 27)
+scale = Vector2(-1, 1)
+connections = [NodePath("../WireInner"), NodePath("../WireInner7"), NodePath("../InnerToMidDiagonal4")]
+
+[node name="InnerToMidDiagonal" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("9_slte3")]
+position = Vector2(56, 26)
+connections = [NodePath("../WireInner"), NodePath("../WireInner2"), NodePath("../WireMid1"), NodePath("../WireMid2")]
+
+[node name="InnerToMidDiagonal2" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("9_slte3")]
+position = Vector2(56, 56)
+rotation = 1.5708
+connections = [NodePath("../WireMid3"), NodePath("../WireMid4"), NodePath("../WireInner3"), NodePath("../WireInner4")]
+
+[node name="InnerToMidDiagonal3" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("9_slte3")]
+position = Vector2(26, 56)
+connections = [NodePath("../WireMid5"), NodePath("../WireMid6"), NodePath("../WireInner5"), NodePath("../WireInner6")]
+
+[node name="InnerToMidDiagonal4" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("9_slte3")]
+position = Vector2(26, 26)
+rotation = 1.5708
+connections = [NodePath("../WireMid8"), NodePath("../WireMid7"), NodePath("../WireInner7"), NodePath("../WireInner8")]
+
+[node name="RunButton" type="TextureRect" parent="MainField"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 20.0
+offset_bottom = 14.0
+texture = ExtResource("10_hawww")
+
+[node name="Area2D" type="Area2D" parent="MainField/RunButton"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainField/RunButton/Area2D"]
+position = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_yot3a")
+
+[node name="TopLeftField" type="ColorRect" parent="."]
+offset_right = 54.0
+offset_bottom = 34.0
+color = Color(0.792157, 0.862745, 0.623529, 1)
+
+[node name="TopLeftBorder" type="NinePatchRect" parent="TopLeftField"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 57.0
+offset_bottom = 35.0
+texture = ExtResource("1_hv46d")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Title" type="Label" parent="TopLeftField"]
+modulate = Color(0.188235, 0.384314, 0.235294, 1)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 54.0
+offset_bottom = 16.0
+theme_override_constants/line_spacing = 1
+theme_override_fonts/font = ExtResource("11_wu0ll")
+theme_override_font_sizes/font_size = 1
+text = "SUMMONING
+CIRCUITS"
+uppercase = true
+
+[node name="Title2" type="Label" parent="TopLeftField"]
+modulate = Color(0.188235, 0.384314, 0.235294, 1)
+layout_mode = 0
+offset_left = 3.0
+offset_top = 25.0
+offset_right = 52.0
+offset_bottom = 31.0
+theme_override_constants/line_spacing = 1
+theme_override_fonts/font = ExtResource("11_wu0ll")
+theme_override_font_sizes/font_size = 1
+text = "LEVEL 2"
+uppercase = true
+
+[node name="BottomLeftField" type="ColorRect" parent="."]
+offset_top = 34.0
+offset_right = 54.0
+offset_bottom = 88.0
+color = Color(0.792157, 0.862745, 0.623529, 1)
+
+[node name="BottomLeft" type="NinePatchRect" parent="BottomLeftField"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 57.0
+offset_bottom = 57.0
+texture = ExtResource("1_hv46d")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="BottomLeftField"]
+modulate = Color(0.188235, 0.384314, 0.235294, 1)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 54.0
+offset_bottom = 54.0
+theme_override_constants/line_spacing = 2
+theme_override_fonts/font = ExtResource("11_wu0ll")
+theme_override_font_sizes/font_size = 1
+text = "RITUAL ORDER
+
+START NORTH
+GO OPPOSITE
+GO    GO"
+uppercase = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="BottomLeftField"]
+position = Vector2(18, 33)
+texture = ExtResource("11_caapq")
+
+[node name="Sprite2D" type="Sprite2D" parent="BottomLeftField"]
+modulate = Color(0.188235, 0.384314, 0.235294, 1)
+position = Vector2(18, 33)
+texture = ExtResource("12_4abkc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="BottomLeftField"]
+position = Vector2(43, 33)
+texture = ExtResource("11_caapq")
+
+[node name="Sprite2D4" type="Sprite2D" parent="BottomLeftField"]
+modulate = Color(0.188235, 0.384314, 0.235294, 1)
+position = Vector2(43, 33)
+texture = ExtResource("13_55sam")
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("runeList")]
+script = ExtResource("12_yk7rm")
+runeList = [NodePath("../MainField/CircleOutline/Connectable/Rune"), NodePath("../MainField/CircleOutline/Connectable/Rune3"), NodePath("../MainField/CircleOutline/Connectable/Rune4"), NodePath("../MainField/CircleOutline/Connectable/Rune2")]
+nextPuzzle = SubResource("PackedScene_hpo7g")
+
+[node name="winLabel" type="Label" parent="GameManager"]
+visible = false
+modulate = Color(0.545098, 0.67451, 0.0588235, 1)
+offset_left = 4.0
+offset_top = 75.0
+offset_right = 52.0
+offset_bottom = 87.0
+theme_override_constants/line_spacing = 1
+theme_override_fonts/font = ExtResource("11_wu0ll")
+theme_override_font_sizes/font_size = 1
+text = "SUCCESSfully
+SUMMONed"
+uppercase = true
+
+[node name="failLabel" type="Label" parent="GameManager"]
+modulate = Color(0.545098, 0.67451, 0.0588235, 1)
+offset_left = 3.0
+offset_top = 75.0
+offset_right = 59.0
+offset_bottom = 87.0
+theme_override_constants/line_spacing = 1
+theme_override_fonts/font = ExtResource("11_wu0ll")
+theme_override_font_sizes/font_size = 1
+text = "THE SUMMONING
+HAS FAILED"
+uppercase = true
+
+[connection signal="input_event" from="MainField/RunButton/Area2D" to="GameManager" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="MainField/RunButton/Area2D" to="GameManager" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="MainField/RunButton/Area2D" to="GameManager" method="_on_area_2d_mouse_exited"]

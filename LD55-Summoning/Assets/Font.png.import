@@ -1,0 +1,21 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://dpitwllywq602"
+path="res://.godot/imported/Font.png-ce1b6e7646229c872a38882cd50c9ef3.fontdata"
+
+[deps]
+
+source_file="res://Assets/Font.png"
+dest_files=["res://.godot/imported/Font.png-ce1b6e7646229c872a38882cd50c9ef3.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("\'A\'-\'Z\'", "\'0\'-\'9\'", "\' \'")
+columns=8
+rows=6
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+fallbacks=[]
+compress=true

@@ -115,12 +115,12 @@ connections = [NodePath("../Rune2"), NodePath("../WireMid4"), NodePath("../Inner
 [node name="WireMid4" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_bxq7b")]
 position = Vector2(53, 62)
 scale = Vector2(1, -1)
-connections = [NodePath("../WireMid3"), NodePath("../WireMid5"), NodePath("../InnerToMidDiagonal2")]
+connections = [NodePath("../WireMid3"), NodePath("../WireMid5"), NodePath("../InnerToMidDiagonal2"), NodePath("../Rune3")]
 
 [node name="WireMid5" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_bxq7b")]
 position = Vector2(29, 62)
 scale = Vector2(-1, -1)
-connections = [NodePath("../WireMid4"), NodePath("../WireMid6"), NodePath("../InnerToMidDiagonal3")]
+connections = [NodePath("../WireMid4"), NodePath("../WireMid6"), NodePath("../InnerToMidDiagonal3"), NodePath("../Rune3")]
 
 [node name="WireMid6" parent="MainField/CircleOutline/Connectable" node_paths=PackedStringArray("connections") instance=ExtResource("6_bxq7b")]
 position = Vector2(20, 53)
